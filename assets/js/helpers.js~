@@ -1,0 +1,11 @@
+
+
+function handleCountriesToDo() {
+    var table = document.getElementById("description_table");
+    var row = table.insertRow(0);
+    row.className = "info";
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    cell1.innerHTML = "Dish".bold();
+    cell2.innerHTML = "description";
+}
