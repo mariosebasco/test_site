@@ -173,29 +173,52 @@ function handleGetUser(url) {
     }
 }
 
-// **************************************************
-// var chrt = document.getElementById("mycanvas").getContext("2d");
-// var myarr = [65, 59, 80, 81, 56, 55, 40];
-// var data = {
-//     labels: ["January", "February", "March", "April", "May", "June", "July"], //x-axis
-//     datasets: [
-//         {
-//             label: "My First dataset", //optional
-//             fillColor: "rgba(220,220,220,0.8)",
-//             strokeColor: "rgba(220,220,220,0.8)",
-//             highlightFill: "rgba(220,220,220,0.75)",
-//             highlightStroke: "rgba(220,220,220,1)",
-//             data: [65, 59, 80, 81, 56, 55, 40] // y-axis
-//         },
-// 		{
-//             label: "My Second dataset", //optional
-//             fillColor: "rgba(220,120,220,0.8)",
-//             strokeColor: "rgba(220,120,220,0.8)",
-//             highlightFill: "rgba(220,220,220,0.75)",
-//             highlightStroke: "rgba(220,220,220,1)",
-//             data: myarr
-//         }
-//     ]
-// };
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
 
-// var myFirstChart = new Chart(chrt).Bar(data);
+    // The data for our dataset
+    data: {
+        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
+        datasets: [{
+            label: 'Ex 1',
+	    lineTension: 0,
+            backgroundColor: 'rgba(50, 255, 103, 0.3)',
+            borderColor: 'rgb(0, 0, 0)',
+            data: [225, 225, 230, 245, 245, 255]
+        }, {
+            label: 'Ex 2',
+	    lineTension: 0,
+            backgroundColor: 'rgba(255, 50, 103, 0.3)',
+            borderColor: 'rgb(0, 0, 0)',
+            data: [225, 234, 230, 265, 276, 276]
+	}, {
+            label: 'Ex 3',
+	    lineTension: 0,
+            backgroundColor: 'rgba(50, 100, 255, 0.3)',
+            borderColor: 'rgb(0, 0, 0)',
+            data: [100, 115, 120, 120, 122, 130]
+	}]
+    },
+
+    // Configuration options go here
+    options: {
+	title: {
+	    display: true,
+	    text: 'Chart Title',
+	    fontSize: 24
+	}
+    }
+});
+
+
+function addData(chart_in, label, data) {
+    chart_in.data.labels.push(label);
+    for(i = 0; i < data.length; i++) {
+	chart_in.data.datasets[i].data.push(data[i]);
+    }
+    chart_in.update();
+}
+
+addData(chart, 'Week 7', [120, 110, 100]);
